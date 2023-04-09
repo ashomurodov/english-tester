@@ -9,7 +9,7 @@
 }
 body {
   height: 100vh;
-  background-color: #ec48fb;
+  background-color: #e84525;
   display: grid;
   place-items: center;
 }
@@ -20,8 +20,8 @@ body {
   justify-content: center;
 }
 .level {
-    width: 300px;
-    height: 90px;
+  width: 300px;
+  height: 90px;
   border-radius: 10px;
   font-size: 30px;
   font-weight: 900;
@@ -29,6 +29,7 @@ body {
   box-shadow: 10px 8px 7px #00000065;
   cursor: pointer;
   border: none;
+  transition: 0.3s all linear;
 }
 .level-1 {
   background-color: #655bd1;
@@ -40,5 +41,20 @@ body {
   background-color: #03a800;
 }
 .level:hover {
-    width;
+  transform: translateY(-10px);
+}
+.level:active {
+    box-shadow: none;
+    transform: translateX(3px);
+}
+.start-btn {
+    background-color: #f5ab39;
+}
+.displayNone {
+    display: none;
+}
+.back {
+    position: absolute;
+    top: 5%;
+    left: 10%;
 }
