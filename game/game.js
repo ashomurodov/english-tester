@@ -11,19 +11,18 @@ const playgroundSection = document.querySelector(".playground");
 const finishBtn = document.querySelector(".finish");
 const cards = document.querySelectorAll(".card");
 
-
 // Results page variables
 const resultSection = document.querySelector(".result-wrapper ");
 const allResultBtn = document.querySelector(".all-result-btn");
 const restartBtn = document.querySelector(".restart-btn");
 const changeLevelBtn = document.querySelector(".change-level-btn");
-const time = document.querySelector(".time");
+const time = document.querySelector(".timeG");
 const correctAnswer = document.querySelector(".correct span");
 const incorrectAnswer = document.querySelector(".incorrect span");
 
 // All results variable
 const allResultSection = document.querySelector(".all-results");
-const backResultArrow = document.querySelector('.back-arrow');
+const backResultArrow = document.querySelector(".back-arrow");
 const userName = document.querySelector(".user p");
 
 // interval
@@ -52,6 +51,8 @@ startBtn.addEventListener("click", () => {
 finishBtn.addEventListener("click", () => {
   resultSection.classList.remove("displayNone");
   playgroundSection.classList.add("displayNone");
+  clearInterval(timeInterval);
+  finishGame();
 });
 
 // function getRandomLocation() {
@@ -75,28 +76,30 @@ function createWords() {
 createWords();
 
 // Results Modal listeners
-allResultBtn.addEventListener('click', () => {
-  allResultSection.classList.remove('displayNone')
-  resultSection.classList.add('displayNone');
-})
-restartBtn.addEventListener('click', () => {
-  playgroundSection.classList.remove('displayNone')
-  resultSection.classList.add('displayNone');
+allResultBtn.addEventListener("click", () => {
+  allResultSection.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
+  showAllResults();
 });
-changeLevelBtn.addEventListener('click', () => {
-  levelBox.classList.remove('displayNone')
-  resultSection.classList.add('displayNone')
+restartBtn.addEventListener("click", () => {
+  playgroundSection.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
+});
+changeLevelBtn.addEventListener("click", () => {
+  levelBox.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
 });
 
 // All results listener
-backResultArrow.addEventListener('click', () => {
-  allResultSection.classList.add('displayNone');
-  resultSection.classList.remove('displayNone');
-})
-userName.textContent = window.localStorage.getItem('userName');
-time.textContent = window.localStorage.setItem(`${time}`);
-correctAnswer.textContent = window.localStorage.setItem(`${correctAnswer}`);
-incorrectAnswer.textContent = window.localStorage.setItem(`${incorrectAnswer}`);
+backResultArrow.addEventListener("click", () => {
+  allResultSection.classList.add("displayNone");
+  resultSection.classList.remove("displayNone");
+});
+userName.textContent = window.localStorage.getItem("userName");
+// time.textContent = window.localStorage.setItem("time", `${time}`);
+// correctAnswer.textContent = window.localStorage.setItem("correctAnswer", `${correctAnswer}`);
+// incorrectAnswer.textContent = window.localStorage.setItem("incorrectAnswer", `${incorrectAnswer}`);
+
 allResultBtn.addEventListener("click", () => {
   allResultSection.classList.remove("displayNone");
   resultSection.classList.add("displayNone");
@@ -110,15 +113,65 @@ backResultArrow.addEventListener("click", () => {
 
 // Playground time;
 const timeBar = document.querySelector(".time-bar");
-time = 90;
+let timeE = 90;
 function startTime() {
-  time -= 0.75;
-  if (time <= 0) {
+  timeE -= 0.75;
+  if (timeE <= 0) {
     clearInterval(timeInterval);
     // GameOver function
   }
-  console.log("timeee", time);
-  timeBar.style.width = `${time}%`;
+  console.log("timeee", timeE);
+  timeBar.style.width = `${timeE}%`;
 }
 
 // startTime();
+
+let correctE = 10,
+  incorrectE = 45;
+
+const resultBox = document.querySelector(".results-box");
+let historyGame = JSON.parse(localStorage.getItem("list")) ? JSON.parse(localStorage.getItem("list")) : [];
+
+function finishGame() {
+  const MinuteCurrent = Math.floor(timeE / 60);
+  const SecundeCurrent = Math.floor(timeE % 60);
+  const result = `${MinuteCurrent}:${SecundeCurrent}`;
+  clearInterval(timeInterval);
+  time.textContent = result;
+  console.log(time);
+  correctAnswer.textContent = correctE;
+  incorrectAnswer.textContent = incorrectE;
+  historyGame.push({ time: result, correctAnswer: correctE, incorrectAnswer: incorrectE });
+  console.log(result, correctE, incorrectE);
+  setItem();
+}
+
+function setItem() {
+  localStorage.setItem("list", JSON.stringify(historyGame));
+}
+
+function showAllResults() {
+  historyGame.forEach((item, idx) => {
+    const time = item.time;
+    const correct = item.correctAnswer;
+    const incorrect = item.incorrectAnswer;
+    const result = document.createElement("div");
+    result.classList.add("result");
+    for (let i = 0; i < 3; i++) {
+      const el = document.createElement("p");
+      if (i == 0) {
+        el.classList.add("time");
+        el.innerHTML = time;
+      } else if (i == 1) {
+        el.classList.add("correct");
+        el.innerHTML = "correct: " + correct;
+      } else if (i == 2) {
+        el.classList.add("wrong");
+        el.innerHTML = "wrong: " + incorrect;
+      }
+
+      result.appendChild(el);
+    }
+    resultBox.appendChild(result);
+  });
+}
