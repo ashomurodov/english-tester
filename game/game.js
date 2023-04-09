@@ -71,6 +71,10 @@ let timeInterval;
 //Audios
 const startAudio = new Audio();
 startAudio.src = "/assets/audios/start.mp3"
+const wrongAudio = new Audio();
+wrongAudio.src = "/assets/audios/wrong.mp3"
+const correctAudio = new Audio();
+correctAudio.src = "/assets/audios/correct.mp3"
 
 // Page-1 listeners
 levels.forEach((level) => {
