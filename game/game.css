@@ -50,8 +50,20 @@ body {
 
 .start-btn {
   background-color: #f5ab39;
+  width: 300px;
+  height: 90px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  color: white;
+  box-shadow: 10px 8px 7px #00000065;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s all linear;
 }
-
+.card p {
+  cursor: pointer;
+}
 .back {
   position: absolute;
   top: 5%;
@@ -143,9 +155,10 @@ body {
   width: 80%;
 }
 .results-box {
+  overflow-y: scroll;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.89);
-  height: 70vh;
+  height:70vh ;
   padding: 40px;
   border-radius: 10px;
 }
@@ -252,6 +265,9 @@ body {
   display: flex;
   font-size: 36px;
   color: #dff;
+}
+.card p {
+  background-color: #03a800;
 }
 .back-arrow {
   position: absolute;

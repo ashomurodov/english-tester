@@ -1,3 +1,4 @@
+"use strict";
 // Global variables
 const easyWords = [
   ["home", "uy"],
@@ -77,10 +78,13 @@ const correctAudio = new Audio();
 correctAudio.src = "/assets/audios/correct.mp3";
 
 // Page-1 listeners
-levels.forEach((level) => {
+levels.forEach((level, idx) => {
   level.addEventListener("click", () => {
     levelBox.classList.add("displayNone");
     page2.classList.remove("displayNone");
+    if (idx === 0) randomWordsGenerator(easyWords);
+    else if (idx === 1) randomWordsGenerator(mediumWords);
+    else randomWordsGenerator(hardWords);
   });
 });
 
@@ -104,17 +108,55 @@ finishBtn.addEventListener("click", () => {
   finishGame();
 });
 
-function createWords() {
-  cards.forEach((item, idx) => {
-    const word = document.createElement("div");
-    word.classList.add("random-word");
-    word.textContent = "HELLO";
-    word.style.rotate = `${Math.random() * 90}deg`;
-    item.appendChild(word);
+// function getRandomLocation() {
+//   const width = window.innerWidth;
+//   const height = window.innerHeight;
+//   const x = Math.random() * (width - 200) + 100;
+//   const y = Math.random() * (height - 200) + 100;
+//   return { x, y };
+// }
+
+function createWords(randomNums, collectionWords) {
+  cards.forEach((item) => {
+    item.style.rotate = `${Math.random() * 90}deg`;
+  });
+  console.log(collectionWords);
+  let j = 0;
+  for (let i = 0; i < 20; i++) {
+    let randomColor1 = Math.floor(Math.random() * 16777215).toString(16);
+    let randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
+    cards[randomNums[i]].innerHTML = `<p style="background-color:#${randomColor1};">${collectionWords[j][0]}</p>`;
+    cards[randomNums[i + 1]].innerHTML = `<p style="background-color:#${randomColor2};">${collectionWords[j][1]}</p>`;
+    j++;
+    i++;
+  }
+  const allParagraph = document.querySelectorAll(".card p");
+  let check = [];
+  let pies = [];
+  allParagraph.forEach((p) => {
+    p.addEventListener("click", (e) => {
+      pies.push(p);
+      collectionWords.forEach((arr, idx) => {
+        if (arr.includes(p.textContent)) {
+          check.push(idx);
+
+          if (check.length === 2) {
+            if (check[0] === check[1]) {
+              pies.forEach((p) => {
+                p.classList.add("displayNone");
+              });
+              check = [];
+              pies = [];
+            } else {
+              check = [];
+              pies = [];
+            }
+          }
+        }
+      });
+    });
   });
 }
-
-createWords();
 
 // Results Modal listeners
 allResultBtn.addEventListener("click", () => {
@@ -125,7 +167,6 @@ allResultBtn.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
   playgroundSection.classList.remove("displayNone");
   resultSection.classList.add("displayNone");
-  restartGame();
 });
 changeLevelBtn.addEventListener("click", () => {
   levelBox.classList.remove("displayNone");
@@ -138,12 +179,36 @@ backResultArrow.addEventListener("click", () => {
   resultSection.classList.remove("displayNone");
 });
 userName.textContent = window.localStorage.getItem("userName");
+
 // time.textContent = window.localStorage.setItem("time", `${time}`);
 // correctAnswer.textContent = window.localStorage.setItem("correctAnswer", `${correctAnswer}`);
 // incorrectAnswer.textContent = window.localStorage.setItem("incorrectAnswer", `${incorrectAnswer}`);
 
 // Playground time;
 const timeBar = document.querySelector(".time-bar");
+
+function startTime() {
+  if (time <= 0) {
+    clearInterval(timeInterval);
+    // GameOver function
+  }
+
+  timeBar.style.width = `${time}%`;
+}
+
+// startTime();
+userName.textContent = window.localStorage.getItem("userName");
+
+// Taker random words Function
+function randomWordsGenerator(collectionWords) {
+  let randomNums = [];
+  for (let i = 0; i < 20; i++) {
+    let num = Math.floor(Math.random() * 20);
+    if (randomNums.includes(num)) i--;
+    else randomNums.push(num);
+  }
+  createWords(randomNums, collectionWords);
+}
 let timeE = 90;
 function startTime() {
   timeE -= 0.75;
