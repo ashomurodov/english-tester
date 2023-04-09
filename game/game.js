@@ -83,8 +83,9 @@ backBtn.addEventListener("click", () => {
   page2.classList.add("displayNone");
 });
 startBtn.addEventListener("click", () => {
-  page2.classList.add('displayNone')
-  playgroundSection.classList.remove('displayNone')
+  timeInterval = setInterval(startTime, 1000);
+  page2.classList.add("displayNone");
+  playgroundSection.classList.remove("displayNone");
 });
 
 // Playground listeners
@@ -118,6 +119,14 @@ allResultBtn.addEventListener('click', () => {
   allResultSection.classList.remove('displayNone')
   resultSection.classList.add('displayNone');
 })
+restartBtn.addEventListener('click', () => {
+  playgroundSection.classList.remove('displayNone')
+  resultSection.classList.add('displayNone');
+});
+changeLevelBtn.addEventListener('click', () => {
+  levelBox.classList.remove('displayNone')
+  resultSection.classList.add('displayNone')
+});
 
 // All results listener
 backResultArrow.addEventListener('click', () => {
@@ -125,3 +134,38 @@ backResultArrow.addEventListener('click', () => {
   resultSection.classList.remove('displayNone');
 })
 userName.textContent = window.localStorage.getItem('userName');
+time.textContent = window.localStorage.setItem(`${time}`);
+correctAnswer.textContent = window.localStorage.setItem(`${correctAnswer}`);
+incorrectAnswer.textContent = window.localStorage.setItem(`${incorrectAnswer}`);
+allResultBtn.addEventListener("click", () => {
+  allResultSection.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
+});
+
+// All results listener
+allResultBtn.addEventListener("click", () => {
+  allResultSection.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
+});
+
+// All results listener
+backResultArrow.addEventListener("click", () => {
+  allResultSection.classList.add("displayNone");
+  resultSection.classList.remove("displayNone");
+});
+
+// Playground time;
+const timeBar = document.querySelector(".time-bar");
+time = 90;
+function startTime() {
+  time -= 0.75;
+  if (time <= 0) {
+    clearInterval(timeInterval);
+    // GameOver function
+  }
+  console.log("timeee", time);
+  timeBar.style.width = `${time}%`;
+}
+
+// startTime();
+userName.textContent = window.localStorage.getItem("userName");
