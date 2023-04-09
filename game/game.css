@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lato";
+  user-select: none;
+}
+body {
+  height: 100vh;
+  background-color: #ec48fb;
+  display: grid;
+  place-items: center;
+}
+.level-box {
+  display: flex;
+  gap: 66px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.level {
+    width: 300px;
+    height: 90px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 900;
+  color: white;
+  box-shadow: 10px 8px 7px #00000065;
+  cursor: pointer;
+  border: none;
+}
+.level-1 {
+  background-color: #655bd1;
+}
+.level-2 {
+  background-color: #f5ab39;
+}
+.level-3 {
+  background-color: #03a800;
+}
+.level:hover {
+    width;
+}
