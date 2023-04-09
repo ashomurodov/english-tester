@@ -24,13 +24,12 @@ const incorrectAnswer = document.querySelector(".incorrect span");
 // All results variable
 const allResultSection = document.querySelector(".all-results");
 const backResultArrow = document.querySelector('.back-arrow');
-const userName = document.querySelector(".user p");
 
 // Page-1 listeners
 levels.forEach((level) => {
   level.addEventListener("click", () => {
     levelBox.classList.add("displayNone");
-    page2.classList.remove('displayNone')
+    page2.classList.remove("displayNone");
   });
 });
 
@@ -40,15 +39,16 @@ backBtn.addEventListener("click", () => {
   page2.classList.add("displayNone");
 });
 startBtn.addEventListener("click", () => {
-  page2.classList.add('displayNone')
-  playgroundSection.classList.remove('displayNone')
+  timeInterval = setInterval(startTime, 1000);
+  page2.classList.add("displayNone");
+  playgroundSection.classList.remove("displayNone");
 });
 
 // Playground listeners
-finishBtn.addEventListener('click', () => {
-  resultSection.classList.remove('displayNone');
-  playgroundSection.classList.add('displayNone');
-})
+finishBtn.addEventListener("click", () => {
+  resultSection.classList.remove("displayNone");
+  playgroundSection.classList.add("displayNone");
+});
 
 // function getRandomLocation() {
 //   const width = window.innerWidth;
@@ -70,27 +70,14 @@ function createWords() {
 
 createWords();
 
-
 // Results Modal listeners
 allResultBtn.addEventListener('click', () => {
   allResultSection.classList.remove('displayNone')
   resultSection.classList.add('displayNone');
 })
-restartBtn.addEventListener('click', () => {
-  playgroundSection.classList.remove('displayNone')
-  resultSection.classList.add('displayNone');
-});
-changeLevelBtn.addEventListener('click', () => {
-  levelBox.classList.remove('displayNone')
-  resultSection.classList.add('displayNone')
-});
 
 // All results listener
 backResultArrow.addEventListener('click', () => {
   allResultSection.classList.add('displayNone');
   resultSection.classList.remove('displayNone');
 })
-userName.textContent = window.localStorage.getItem('userName');
-time.textContent = window.localStorage.setItem(`${time}`);
-correctAnswer.textContent = window.localStorage.setItem(`${correctAnswer}`);
-incorrectAnswer.textContent = window.localStorage.setItem(`${incorrectAnswer}`);
