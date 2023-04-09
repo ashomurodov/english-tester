@@ -71,12 +71,11 @@ const userName = document.querySelector(".user p");
 let timeInterval;
 //Audios
 const startAudio = new Audio();
-startAudio.src = "/assets/audios/start.mp3"
+startAudio.src = "/assets/audios/start.mp3";
 const wrongAudio = new Audio();
-wrongAudio.src = "/assets/audios/wrong.mp3"
+wrongAudio.src = "/assets/audios/wrong.mp3";
 const correctAudio = new Audio();
-correctAudio.src = "/assets/audios/correct.mp3"
-
+correctAudio.src = "/assets/audios/correct.mp3";
 
 // Page-1 listeners
 levels.forEach((level, idx) => {
@@ -109,14 +108,6 @@ finishBtn.addEventListener("click", () => {
   finishGame();
 });
 
-// function getRandomLocation() {
-//   const width = window.innerWidth;
-//   const height = window.innerHeight;
-//   const x = Math.random() * (width - 200) + 100;
-//   const y = Math.random() * (height - 200) + 100;
-//   return { x, y };
-// }
-
 function createWords(randomNums, collectionWords) {
   cards.forEach((item) => {
     item.style.rotate = `${Math.random() * 90}deg`;
@@ -126,38 +117,34 @@ function createWords(randomNums, collectionWords) {
   for (let i = 0; i < 20; i++) {
     let randomColor1 = Math.floor(Math.random() * 16777215).toString(16);
     let randomColor2 = Math.floor(Math.random() * 16777215).toString(16);
-    cards[
-      randomNums[i]
-    ].innerHTML = `<p style="background-color:#${randomColor1};">${collectionWords[j][0]}</p>`;
-    cards[
-      randomNums[i + 1]
-    ].innerHTML = `<p style="background-color:#${randomColor2};">${collectionWords[j][1]}</p>`;
+    cards[randomNums[i]].innerHTML = `<p style="background-color:#${randomColor1};">${collectionWords[j][0]}</p>`;
+    cards[randomNums[i + 1]].innerHTML = `<p style="background-color:#${randomColor2};">${collectionWords[j][1]}</p>`;
     j++;
     i++;
   }
   const allParagraph = document.querySelectorAll(".card p");
   let check = [];
-  let pies = []
+  let pies = [];
   allParagraph.forEach((p) => {
     p.addEventListener("click", (e) => {
       pies.push(p);
       collectionWords.forEach((arr, idx) => {
         if (arr.includes(p.textContent)) {
-          
           check.push(idx);
-          
+
           if (check.length === 2) {
             if (check[0] === check[1]) {
               correctAudio.play()
               pies.forEach((p) => {
-                p.classList.add('displayNone');
-              })
+                p.classList.add("displayNone");
+              });
               check = [];
               pies = [];
             } else {
-              check = []; pies = [];
-              wrongAudio.play()
-            };
+              check = [];
+              pies = [];
+              wrongAudio.play();
+            }
           }
         }
       });
@@ -166,26 +153,6 @@ function createWords(randomNums, collectionWords) {
 }
 
 // Results Modal listeners
-allResultBtn.addEventListener("click", () => {
-  allResultSection.classList.remove("displayNone");
-  resultSection.classList.add("displayNone");
-});
-restartBtn.addEventListener("click", () => {
-  playgroundSection.classList.remove("displayNone");
-  resultSection.classList.add("displayNone");
-});
-changeLevelBtn.addEventListener("click", () => {
-  levelBox.classList.remove("displayNone");
-  resultSection.classList.add("displayNone");
-});
-
-// All results listener
-backResultArrow.addEventListener("click", () => {
-  allResultSection.classList.add("displayNone");
-  resultSection.classList.remove("displayNone");
-});
-userName.textContent = window.localStorage.getItem("userName");
-
 allResultBtn.addEventListener("click", () => {
   allResultSection.classList.remove("displayNone");
   resultSection.classList.add("displayNone");
@@ -206,20 +173,10 @@ backResultArrow.addEventListener("click", () => {
   resultSection.classList.remove("displayNone");
 });
 userName.textContent = window.localStorage.getItem("userName");
+
 // time.textContent = window.localStorage.setItem("time", `${time}`);
 // correctAnswer.textContent = window.localStorage.setItem("correctAnswer", `${correctAnswer}`);
 // incorrectAnswer.textContent = window.localStorage.setItem("incorrectAnswer", `${incorrectAnswer}`);
-
-allResultBtn.addEventListener("click", () => {
-  allResultSection.classList.remove("displayNone");
-  resultSection.classList.add("displayNone");
-});
-
-// All results listener
-backResultArrow.addEventListener("click", () => {
-  allResultSection.classList.add("displayNone");
-  resultSection.classList.remove("displayNone");
-});
 
 // Playground time;
 const timeBar = document.querySelector(".time-bar");
@@ -245,6 +202,7 @@ function randomWordsGenerator(collectionWords) {
     else randomNums.push(num);
   }
   createWords(randomNums, collectionWords);
+}
 let timeE = 90;
 function startTime() {
   timeE -= 0.75;
@@ -281,6 +239,7 @@ function setItem() {
 }
 
 function showAllResults() {
+  resultBox.innerHTML = "";
   historyGame.forEach((item, idx) => {
     const time = item.time;
     const correct = item.correctAnswer;
@@ -304,4 +263,9 @@ function showAllResults() {
     }
     resultBox.appendChild(result);
   });
-}}
+}
+
+function restartGame() {
+  timeE = 90;
+  timeInterval = setInterval(startTime, 1000);
+}
