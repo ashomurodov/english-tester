@@ -15,6 +15,11 @@ const cards = document.querySelectorAll(".card");
 // Results page variables
 const resultSection = document.querySelector(".result-wrapper ");
 const allResultBtn = document.querySelector(".all-result-btn");
+const restartBtn = document.querySelector(".restart-btn");
+const changeLevelBtn = document.querySelector(".change-level-btn");
+const time = document.querySelector(".time");
+const correctAnswer = document.querySelector(".correct span");
+const incorrectAnswer = document.querySelector(".incorrect span");
 
 // All results variable
 const allResultSection = document.querySelector(".all-results");
@@ -71,6 +76,14 @@ allResultBtn.addEventListener('click', () => {
   allResultSection.classList.remove('displayNone')
   resultSection.classList.add('displayNone');
 })
+restartBtn.addEventListener('click', () => {
+  playgroundSection.classList.remove('displayNone')
+  resultSection.classList.add('displayNone');
+});
+changeLevelBtn.addEventListener('click', () => {
+  levelBox.classList.remove('displayNone')
+  resultSection.classList.add('displayNone')
+});
 
 // All results listener
 backResultArrow.addEventListener('click', () => {
@@ -78,3 +91,6 @@ backResultArrow.addEventListener('click', () => {
   resultSection.classList.remove('displayNone');
 })
 userName.textContent = window.localStorage.getItem('userName');
+time.textContent = window.localStorage.setItem(`${time}`);
+correctAnswer.textContent = window.localStorage.setItem(`${correctAnswer}`);
+incorrectAnswer.textContent = window.localStorage.setItem(`${incorrectAnswer}`);
