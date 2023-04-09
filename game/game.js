@@ -11,6 +11,7 @@ const playgroundSection = document.querySelector(".playground");
 const finishBtn = document.querySelector(".finish");
 const cards = document.querySelectorAll(".card");
 
+
 // Results page variables
 const resultSection = document.querySelector(".result-wrapper ");
 const allResultBtn = document.querySelector(".all-result-btn");
@@ -18,6 +19,7 @@ const allResultBtn = document.querySelector(".all-result-btn");
 // All results variable
 const allResultSection = document.querySelector(".all-results");
 const backResultArrow = document.querySelector('.back-arrow');
+const userName = document.querySelector(".user p");
 
 // Page-1 listeners
 levels.forEach((level) => {
@@ -75,3 +77,4 @@ backResultArrow.addEventListener('click', () => {
   allResultSection.classList.add('displayNone');
   resultSection.classList.remove('displayNone');
 })
+userName.textContent = window.localStorage.getItem('userName');
