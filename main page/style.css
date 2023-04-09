@@ -1,0 +1,94 @@
+@import url(https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap);
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e84525;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.words-container {
+  margin-left: 140px;
+  margin-top: 160px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.words-container button {
+  background-color: hsla(36, 90%, 59%, 1);
+  color: #fff;
+  border: none;
+  padding: 14px 27px;
+  font-size: 24px;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  letter-spacing: 4px;
+  cursor: pointer;
+  z-index: 5;
+  position: relative;
+  transition: scale 0.2s ease-in;
+}
+
+.words-container button:hover {
+  scale: 1.1;
+}
+
+.main img {
+  position: absolute;
+}
+.main h1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 5px;
+  position: relative;
+  z-index: 6;
+}
+
+.ellipse-1 {
+  animation: fly-around 10s linear infinite;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+}
+
+.ellipse-2 {
+  animation: funny-ellipse 2s linear infinite;
+  z-index: 1;
+}
+
+@keyframes funny-ellipse {
+  0% {
+    transform: scale(0.99);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.99);
+  }
+}
+
+/* Define the animation for the body element */
+@keyframes fly-around {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-30%, -30%) rotate(180deg) translateX(100px) rotate(-180deg);
+  }
+  50% {
+    transform: translate(-10%, -10%) rotate(180deg) translateX(600px) rotate(-180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(100px) rotate(360deg);
+  }
+}
