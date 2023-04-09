@@ -300,4 +300,4 @@ function showAllResults() {
     }
     resultBox.appendChild(result);
   });
-}
+}}
