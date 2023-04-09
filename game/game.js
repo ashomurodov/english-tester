@@ -1,3 +1,44 @@
+// Global variables
+const easyWords = [
+  ["home", "uy"],
+  ["dog", "it"],
+  ["cat", "mushik"],
+  ["goose", "g'oz"],
+  ["horse", "ot"],
+  ["car", "moshina"],
+  ["mouse", "sichqon"],
+  ["phone", "telefon"],
+  ["eye", "ko'z"],
+  ["foot", "oyoq"],
+];
+
+const mediumWords = [
+  ["laptop", "noutbook"],
+  ["headphone", "quloqchin"],
+  ["charger", "quvatlagich"],
+  ["keyboard", "klaviatura"],
+  ["rooster", "xo'roz"],
+  ["air-condition", "sovutgich"],
+  ["fridge", "muzlatgich"],
+  ["library", "kutubxona"],
+  ["pillow", "yostiq"],
+  ["stairs", "zinapoya"],
+];
+
+const hardWords = [
+  ["allocate", "ajratish"],
+  ["prospect", "istiqbol"],
+  ["abandon", "quvatlagich"],
+  ["frequency", "chastota"],
+  ["candid", "samimiy"],
+  ["embrace", "quchoqlash"],
+  ["wayward", "qaysar"],
+  ["logical", "mantiqiy"],
+  ["eccentric", "ajib"],
+  ["temper", "jahl"],
+];
+
+// Level variables
 const levels = document.querySelectorAll(".level");
 const levelBox = document.querySelector(".level-box");
 
@@ -11,21 +52,20 @@ const playgroundSection = document.querySelector(".playground");
 const finishBtn = document.querySelector(".finish");
 const cards = document.querySelectorAll(".card");
 
-
 // Results page variables
 const resultSection = document.querySelector(".result-wrapper ");
 const allResultBtn = document.querySelector(".all-result-btn");
 
 // All results variable
 const allResultSection = document.querySelector(".all-results");
-const backResultArrow = document.querySelector('.back-arrow');
+const backResultArrow = document.querySelector(".back-arrow");
 const userName = document.querySelector(".user p");
 
 // Page-1 listeners
 levels.forEach((level) => {
   level.addEventListener("click", () => {
     levelBox.classList.add("displayNone");
-    page2.classList.remove('displayNone')
+    page2.classList.remove("displayNone");
   });
 });
 
@@ -35,15 +75,15 @@ backBtn.addEventListener("click", () => {
   page2.classList.add("displayNone");
 });
 startBtn.addEventListener("click", () => {
-  page2.classList.add('displayNone')
-  playgroundSection.classList.remove('displayNone')
+  page2.classList.add("displayNone");
+  playgroundSection.classList.remove("displayNone");
 });
 
 // Playground listeners
-finishBtn.addEventListener('click', () => {
-  resultSection.classList.remove('displayNone');
-  playgroundSection.classList.add('displayNone');
-})
+finishBtn.addEventListener("click", () => {
+  resultSection.classList.remove("displayNone");
+  playgroundSection.classList.add("displayNone");
+});
 
 // function getRandomLocation() {
 //   const width = window.innerWidth;
@@ -65,16 +105,15 @@ function createWords() {
 
 createWords();
 
-
 // Results Modal listeners
-allResultBtn.addEventListener('click', () => {
-  allResultSection.classList.remove('displayNone')
-  resultSection.classList.add('displayNone');
-})
+allResultBtn.addEventListener("click", () => {
+  allResultSection.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
+});
 
 // All results listener
-backResultArrow.addEventListener('click', () => {
-  allResultSection.classList.add('displayNone');
-  resultSection.classList.remove('displayNone');
-})
-userName.textContent = window.localStorage.getItem('userName');
+backResultArrow.addEventListener("click", () => {
+  allResultSection.classList.add("displayNone");
+  resultSection.classList.remove("displayNone");
+});
+userName.textContent = window.localStorage.getItem("userName");
