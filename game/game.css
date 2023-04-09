@@ -143,9 +143,10 @@ body {
   width: 80%;
 }
 .results-box {
+  overflow-y: scroll;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.89);
-  height: 70vh;
+  height:70vh ;
   padding: 40px;
   border-radius: 10px;
 }
