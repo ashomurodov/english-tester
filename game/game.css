@@ -47,6 +47,7 @@ body {
   box-shadow: none;
   transform: translateX(3px);
 }
+
 .start-btn {
   background-color: #f5ab39;
   width: 300px;
@@ -154,9 +155,10 @@ body {
   width: 80%;
 }
 .results-box {
+  overflow-y: scroll;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.89);
-  height: 70vh;
+  height:70vh ;
   padding: 40px;
   border-radius: 10px;
 }
