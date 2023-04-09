@@ -44,17 +44,263 @@ body {
   transform: translateY(-10px);
 }
 .level:active {
-    box-shadow: none;
-    transform: translateX(3px);
+  box-shadow: none;
+  transform: translateX(3px);
 }
 .start-btn {
-    background-color: #f5ab39;
+  background-color: #f5ab39;
+}
+
+.back {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+}
+.result-wrapper {
+  width: 446px;
+  height: 502px;
+  padding: 100px 28px 64px 28px;
+  background: rgba(255, 255, 255, 0.89);
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.results {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 2px solid #c2c2c2;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+
+.control-btns {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.restart-btn {
+  background: #655bd1;
+  border-radius: 10px;
+  padding: 14px 66px 15px 67px;
+  margin-bottom: 22px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.all-result-btn {
+  background: #03a800;
+  border-radius: 10px;
+  padding: 15px 56px 14px 51px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-bottom: 22px;
+}
+
+.change-level-btn {
+  background: #f5ab39;
+  border-radius: 10px;
+  padding: 15px 41px 14px 41px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-bottom: 22px;
+}
+
+.all-results {
+  width: 80%;
+}
+.results-box {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.89);
+  height: 70vh;
+  padding: 40px;
+  border-radius: 10px;
+}
+.result {
+  color: #24256e;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #c2c2c2;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.correct {
+  color: #099934;
+}
+.wrong {
+  color: #e84525;
+}
+.user {
+  display: flex;
+  position: absolute;
+  right: 10%;
+  top: 5%;
+  align-items: center;
+  gap: 10px;
+}
+.user p {
+  font-weight: 900;
+  font-size: 20px;
+  color: white;
+}
+
+.playground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-box {
+  background-color: #fff;
+  width: 500px;
+  height: 140px;
+  margin-top: 10px;
+  box-shadow: 12px 12px 17px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+  gap: 20px;
+}
+
+.score-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.score-top button {
+  border: none;
+  cursor: pointer;
+  background: #5830f8;
+  border-radius: 8px;
+  padding: 10px 30px;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s ease all;
+}
+
+.score-top button:active {
+  transform: scale(0.93);
+}
+
+.score-top p {
+  font-weight: 800;
+  font-size: 18px;
+  color: #0a0794;
+}
+
+.time-bar {
+  display: block;
+  margin: 20px auto 10px 10px;
+  width: 90%;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #5830f8;
+}
+
+#score {
+  font-size: 40px;
+  letter-spacing: 0.02em;
+  color: #0a0794;
+}
+
+.cards-box {
+  display: grid;
+  grid-template-columns: repeat(5, 130px);
+  grid-template-rows: repeat(4, 130px);
+}
+
+.card {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 36px;
+  color: #dff;
+}
+.back-arrow {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+}
+@media screen and (max-width: 920px) {
+  .score-box {
+    width: 400px;
+    margin-bottom: 60px;
+  }
+  .cards-box {
+    display: grid;
+    grid-template-columns: repeat(5, 90px);
+    grid-template-rows: repeat(4, 90px);
+  }
+
+  .card {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .score-box {
+    width: 300px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+  }
+  .cards-box {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(4, 60px);
+  }
+
+  .card {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .result-wrapper {
+    width: 300px;
+    height: 400px;
+  }
 }
 .displayNone {
-    display: none;
-}
-.back {
-    position: absolute;
-    top: 5%;
-    left: 10%;
+  display: none;
 }

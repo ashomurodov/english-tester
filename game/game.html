@@ -8,15 +8,82 @@
     <link rel="stylesheet" href="game.css" />
   </head>
   <body>
-    <div class="level-box displayNone">
+    <div class="level-box">
       <button class="level-1 level">Easy</button>
       <button class="level-2 level">Medium</button>
       <button class="level-3 level">Hard</button>
     </div>
+
     <div class="page-2 displayNone">
-        <img class="back" src="/assets/img/backArrow.png" alt="">
-        <button class="level start-btn">Start</button>
+      <img class="back" src="/assets/img/backArrow.png" alt="" />
+      <button class="level start-btn">Start</button>
     </div>
+
+    <div class="playground displayNone">
+      <div class="score-box">
+        <div class="score-top">
+          <p>Score: 0</p>
+          <button class="finish">Finish</button>
+        </div>
+        <span class="time-bar"></span>
+      </div>
+      <div class="cards-box">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+      </div>
+    </div>
+
+    <div class="result-wrapper displayNone">
+      <div class="results">
+        <span class="time">2:30</span>
+        <p class="correct">Correct:<span>15</span></p>
+        <p class="incorrect">Incorrect:<span>45</span></p>
+      </div>
+      <div class="control-btns">
+        <button class="restart-btn">Restart</button>
+        <button class="all-result-btn">All results</button>
+        <button class="change-level-btn">Change level</button>
+      </div>
+    </div>
+
+    <section class="all-results displayNone">
+      <img class="back-arrow" src="/assets/img/backArrow.png" alt="" />
+      <div class="user">
+        <img src="/assets/img/user.png" alt="" />
+        <p>Sardor</p>
+      </div>
+
+      <div class="results-box">
+        <div class="result">
+          <p class="time">2:56</p>
+          <p class="correct">correct: 10</p>
+          <p class="wrong">wrong: 20</p>
+        </div>
+        <div class="result">
+          <p class="time">2:56</p>
+          <p class="correct">correct: 10</p>
+          <p class="wrong">wrong: 20</p>
+        </div>
+      </div>
+    </section>
     <script src="game.js"></script>
   </body>
 </html>
