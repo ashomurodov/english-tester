@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    
     <div class="container">
         <img src="/assets/img/bear1 1.png" alt="" class="left-img">
         <div class="login">
@@ -25,10 +26,10 @@
             </div>
 
             <p>Royxatdan o’ting va ingliz tili olamiga sayohat qiling</p>
-            <form action="">
-                <input type="text" placeholder="Ismingizni kiriting" class="name-input" required>
+            <form action="/game/game.html   ">
+                <input type="text" placeholder="Ismingizni kiriting" class="name-input" required oninvalid="this.setCustomValidity('Ism kiriting!!!')">
                 <button type="submit" class="submit-btn" required>
-                    <a href="/main page/index.html">BOSHLASH</a>
+                    <a href="/game/game.html">BOSHLASH</a>
                 </button>
             </form>
         </div>

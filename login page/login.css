@@ -176,3 +176,68 @@ form {
         left: 0;
     }
 }
+@media screen and (max-width:1500px) {
+    .container{
+        display: flex;
+        justify-content: space-around;
+    }
+    .right-img{
+        width: 180px;
+        display: none;
+    }
+    .left-img{
+        width: 230px;
+        display: none;
+    }
+}
+@media screen and (max-width:1000px) {
+    .container{
+        display: flex;
+        justify-content: space-around;
+    }
+    h1{
+        font-size: 50px;
+    }
+    p{
+        font-size: 18px;    
+    }
+    .name-input{
+    padding: 1rem 7rem 1rem 2rem;
+        
+    }
+    .submit-btn{
+        padding:1rem 3rem;
+    }
+    .submit-btn a{
+        font-size: 20px;
+    }
+    body{
+        background-size: 100% 15vh;
+    }
+}
+@media screen and (max-width:500px) {
+    .container{
+        display: flex;
+        justify-content: space-around;
+    }
+    h1{
+        font-size: 50px;
+    }
+    p{
+        font-size: 18px;    
+    }
+    .name-input{
+    padding: 1rem 4rem 1rem 1rem;
+        
+    }
+    .submit-btn{
+        padding:1rem 2rem;
+    }
+    .submit-btn a{
+        font-weight: 500;
+        font-size: 20px;
+    }
+    body{
+        padding: 10px;
+    }
+}
