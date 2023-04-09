@@ -1,5 +1,8 @@
 "use strict";
 // Global variables
+let correctE = 0,
+  incorrectE = 0;
+
 const easyWords = [
   ["home", "uy"],
   ["dog", "it"],
@@ -47,6 +50,7 @@ const levelBox = document.querySelector(".level-box");
 const startBtn = document.querySelector(".start-btn");
 const backBtn = document.querySelector(".back");
 const page2 = document.querySelector(".page-2");
+const liveScore = document.getElementById("liveScore");
 
 // playground variables
 const playgroundSection = document.querySelector(".playground");
@@ -77,14 +81,22 @@ wrongAudio.src = "/assets/audios/wrong.mp3";
 const correctAudio = new Audio();
 correctAudio.src = "/assets/audios/correct.mp3";
 
+let currentLevel;
 // Page-1 listeners
 levels.forEach((level, idx) => {
   level.addEventListener("click", () => {
     levelBox.classList.add("displayNone");
     page2.classList.remove("displayNone");
-    if (idx === 0) randomWordsGenerator(easyWords);
-    else if (idx === 1) randomWordsGenerator(mediumWords);
-    else randomWordsGenerator(hardWords);
+    if (idx === 0) {
+      randomWordsGenerator(easyWords);
+      currentLevel = easyWords;
+    } else if (idx === 1) {
+      randomWordsGenerator(mediumWords);
+      currentLevel = mediumWords;
+    } else {
+      randomWordsGenerator(hardWords);
+      currentLevel = hardWords;
+    }
   });
 });
 
@@ -101,18 +113,20 @@ startBtn.addEventListener("click", () => {
 });
 
 // Playground listeners
-finishBtn.addEventListener("click", () => {
-  resultSection.classList.remove("displayNone");
-  playgroundSection.classList.add("displayNone");
-  clearInterval(timeInterval);
-  finishGame();
-});
+finishBtn.addEventListener("click", finishGame);
+
+// function getRandomLocation() {
+//   const width = window.innerWidth;
+//   const height = window.innerHeight;
+//   const x = Math.random() * (width - 200) + 100;
+//   const y = Math.random() * (height - 200) + 100;
+//   return { x, y };
+// }
 
 function createWords(randomNums, collectionWords) {
   cards.forEach((item) => {
     item.style.rotate = `${Math.random() * 90}deg`;
   });
-  console.log(collectionWords);
   let j = 0;
   for (let i = 0; i < 20; i++) {
     let randomColor1 = Math.floor(Math.random() * 16777215).toString(16);
@@ -134,7 +148,10 @@ function createWords(randomNums, collectionWords) {
 
           if (check.length === 2) {
             if (check[0] === check[1]) {
-              correctAudio.play()
+              correctAudio.play();
+              correctE++;
+              if (correctE == 10) finishGame();
+              liveScore.textContent = `Score: ${correctE}`;
               pies.forEach((p) => {
                 p.classList.add("displayNone");
               });
@@ -143,6 +160,7 @@ function createWords(randomNums, collectionWords) {
             } else {
               check = [];
               pies = [];
+              incorrectE++;
               wrongAudio.play();
             }
           }
@@ -161,6 +179,7 @@ allResultBtn.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
   playgroundSection.classList.remove("displayNone");
   resultSection.classList.add("displayNone");
+  restartGame();
 });
 changeLevelBtn.addEventListener("click", () => {
   levelBox.classList.remove("displayNone");
@@ -210,19 +229,19 @@ function startTime() {
     clearInterval(timeInterval);
     // GameOver function
   }
-  console.log("timeee", timeE);
   timeBar.style.width = `${timeE}%`;
 }
 
 // startTime();
 
-let correctE = 10,
-  incorrectE = 45;
-
 const resultBox = document.querySelector(".results-box");
 let historyGame = JSON.parse(localStorage.getItem("list")) ? JSON.parse(localStorage.getItem("list")) : [];
 
 function finishGame() {
+  resultSection.classList.remove("displayNone");
+  playgroundSection.classList.add("displayNone");
+  clearInterval(timeInterval);
+
   const MinuteCurrent = Math.floor((timeE + 30) / 60);
   const SecundeCurrent = Math.floor((timeE + 30) % 60);
   const result = `${MinuteCurrent}:${SecundeCurrent}`;
@@ -239,6 +258,10 @@ function setItem() {
 }
 
 function showAllResults() {
+  historyGame = historyGame.sort(function (a, b) {
+    return a.time.localeCompare(b.time);
+  });
+  setItem();
   resultBox.innerHTML = "";
   historyGame.forEach((item, idx) => {
     const time = item.time;
@@ -268,4 +291,8 @@ function showAllResults() {
 function restartGame() {
   timeE = 90;
   timeInterval = setInterval(startTime, 1000);
+  randomWordsGenerator(currentLevel);
+  correctE = 0;
+  incorrectE = 0;
+  liveScore.textContent = `Score: ${correctE}`;
 }
