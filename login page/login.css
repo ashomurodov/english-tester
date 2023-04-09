@@ -1,6 +1,15 @@
 @import url(/assets/fonts/fonts.css);
 @import url(https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap);
 
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
 body {
     font-family: 'Lexend Deca', sans-serif;
     width: 100vw;
@@ -10,13 +19,6 @@ body {
     background-position: bottom;
     background-size:100%;
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 
 .container {
     width: 100%;
@@ -103,6 +105,15 @@ form {
     display: grid;
     place-items: center;
 }
+.submit-btn:hover{
+    background: #f39609;
+}
+.submit-btn:active{
+    box-shadow: none;
+    transform: scale(0.95);
+    background: #cf8008;
+
+}
 
 .submit-btn a {
     text-decoration: none;
@@ -115,27 +126,44 @@ form {
     line-height: 20px;
     text-align: center;
 }
+.right-img{
+    position: relative;
+    animation: right-bear 5s linear infinite;
+}
+.left-img{
+    position: relative;
+    animation: left-bear 5s linear infinite;
+}
 @keyframes animiate-h1 {
     0%{
         top: 0;
-        right: 0;
-        left: 0;
-    }
-    25%{
-        left: 50px;
-        right: 50px;
     }
     50%{
-        left: 100px;
-        top: 50px;
-    }
-    75%{
-        right: 100px;
-        top: 50px;
+        top: 30px;
     }
     100%{
         top: 0;
+    }
+}
+@keyframes right-bear {
+    0%{
         right: 0;
+    }
+    50%{
+        right: 200px;
+    }
+    100%{
+        right: 0;
+    }
+}
+@keyframes left-bear {
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 200px;
+    }
+    100%{
         left: 0;
     }
 }
