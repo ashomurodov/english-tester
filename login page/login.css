@@ -27,7 +27,14 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-
+.entrance{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 80px;
+}
 h1 {
     font-family: 'wicked';
     font-style: normal;
@@ -36,9 +43,10 @@ h1 {
     line-height: 80px;
     text-align: center;
     margin-bottom: 50px;
-    position: relative;
+    position: absolute;
     animation: animiate-h1 3s linear infinite;
 }
+
 
 p {
     font-family: 'Lexend Deca';
@@ -125,6 +133,7 @@ form {
     font-weight: 900;
     line-height: 20px;
     text-align: center;
+    pointer-events: none;
 }
 .right-img{
     position: relative;
@@ -139,7 +148,7 @@ form {
         top: 0;
     }
     50%{
-        top: 30px;
+        top: 30%;
     }
     100%{
         top: 0;
@@ -150,7 +159,7 @@ form {
         right: 0;
     }
     50%{
-        right: 200px;
+        right: 10%;
     }
     100%{
         right: 0;
@@ -161,7 +170,7 @@ form {
         left: 0;
     }
     50%{
-        left: 200px;
+        left: 10%;
     }
     100%{
         left: 0;
