@@ -1,3 +1,44 @@
+// Global variables
+const easyWords = [
+  ["home", "uy"],
+  ["dog", "it"],
+  ["cat", "mushik"],
+  ["goose", "g'oz"],
+  ["horse", "ot"],
+  ["car", "moshina"],
+  ["mouse", "sichqon"],
+  ["phone", "telefon"],
+  ["eye", "ko'z"],
+  ["foot", "oyoq"],
+];
+
+const mediumWords = [
+  ["laptop", "noutbook"],
+  ["headphone", "quloqchin"],
+  ["charger", "quvatlagich"],
+  ["keyboard", "klaviatura"],
+  ["rooster", "xo'roz"],
+  ["air-condition", "sovutgich"],
+  ["fridge", "muzlatgich"],
+  ["library", "kutubxona"],
+  ["pillow", "yostiq"],
+  ["stairs", "zinapoya"],
+];
+
+const hardWords = [
+  ["allocate", "ajratish"],
+  ["prospect", "istiqbol"],
+  ["abandon", "quvatlagich"],
+  ["frequency", "chastota"],
+  ["candid", "samimiy"],
+  ["embrace", "quchoqlash"],
+  ["wayward", "qaysar"],
+  ["logical", "mantiqiy"],
+  ["eccentric", "ajib"],
+  ["temper", "jahl"],
+];
+
+// Level variables
 const levels = document.querySelectorAll(".level");
 const levelBox = document.querySelector(".level-box");
 
@@ -27,6 +68,9 @@ const userName = document.querySelector(".user p");
 
 // interval
 let timeInterval;
+//Audios
+const startAudio = new Audio();
+startAudio.src = "/assets/audios/start.mp3";
 
 // Page-1 listeners
 levels.forEach((level) => {
@@ -45,6 +89,7 @@ startBtn.addEventListener("click", () => {
   timeInterval = setInterval(startTime, 1000);
   page2.classList.add("displayNone");
   playgroundSection.classList.remove("displayNone");
+  startAudio.play();
 });
 
 // Playground listeners
