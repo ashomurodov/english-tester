@@ -14,10 +14,8 @@ body {
     font-family: 'Lexend Deca', sans-serif;
     width: 100vw;
     height: 100vh;
-    background-image: url(/assets/img/Vectors.png);
-    background-repeat:no-repeat;
-    background-position: bottom;
-    background-size:100%;
+    background: radial-gradient(ellipse at center, rgba(255, 254, 234, 1) 0%, rgba(255, 254, 234, 1) 35%, #B7E8EB 100%);
+    overflow: hidden;
 }
 
 .container {
@@ -27,7 +25,8 @@ body {
     justify-content: space-around;
     align-items: center;
 }
-.entrance{
+
+.entrance {
     position: relative;
     width: 100%;
     height: 50px;
@@ -35,6 +34,7 @@ body {
     place-items: center;
     margin-bottom: 80px;
 }
+
 h1 {
     font-family: 'wicked';
     font-style: normal;
@@ -57,7 +57,7 @@ p {
     text-align: center;
     color: #224957;
     margin-bottom: 60px;
-    
+
 }
 
 .k {
@@ -113,10 +113,12 @@ form {
     display: grid;
     place-items: center;
 }
-.submit-btn:hover{
+
+.submit-btn:hover {
     background: #f39609;
 }
-.submit-btn:active{
+
+.submit-btn:active {
     box-shadow: none;
     transform: scale(0.95);
     background: #cf8008;
@@ -135,109 +137,189 @@ form {
     text-align: center;
     pointer-events: none;
 }
-.right-img{
+
+.right-img {
     position: relative;
     animation: right-bear 5s linear infinite;
 }
-.left-img{
+
+.left-img {
     position: relative;
     animation: left-bear 5s linear infinite;
 }
+
 @keyframes animiate-h1 {
-    0%{
+    0% {
         top: 0;
     }
-    50%{
+
+    50% {
         top: 30%;
     }
-    100%{
+
+    100% {
         top: 0;
     }
 }
+
 @keyframes right-bear {
-    0%{
+    0% {
         right: 0;
     }
-    50%{
+
+    50% {
         right: 10%;
     }
-    100%{
+
+    100% {
         right: 0;
     }
 }
+
 @keyframes left-bear {
-    0%{
+    0% {
         left: 0;
     }
-    50%{
+
+    50% {
         left: 10%;
     }
-    100%{
+
+    100% {
         left: 0;
     }
 }
+
 @media screen and (max-width:1500px) {
-    .container{
+    .container {
         display: flex;
         justify-content: space-around;
     }
-    .right-img{
+
+    .right-img {
         width: 180px;
         display: none;
     }
-    .left-img{
+
+    .left-img {
         width: 230px;
         display: none;
     }
 }
+
 @media screen and (max-width:1000px) {
-    .container{
+    .container {
         display: flex;
         justify-content: space-around;
     }
-    h1{
+
+    h1 {
         font-size: 50px;
     }
-    p{
-        font-size: 18px;    
+
+    p {
+        font-size: 18px;
     }
-    .name-input{
-    padding: 1rem 7rem 1rem 2rem;
-        
+
+    .name-input {
+        padding: 1rem 7rem 1rem 2rem;
+
     }
-    .submit-btn{
-        padding:1rem 3rem;
+
+    .submit-btn {
+        padding: 1rem 3rem;
     }
-    .submit-btn a{
+
+    .submit-btn a {
         font-size: 20px;
     }
-    body{
+
+    body {
         background-size: 100% 15vh;
     }
 }
+
 @media screen and (max-width:500px) {
-    .container{
+    .container {
         display: flex;
         justify-content: space-around;
     }
-    h1{
+
+    h1 {
         font-size: 50px;
     }
-    p{
-        font-size: 18px;    
+
+    p {
+        font-size: 18px;
     }
-    .name-input{
-    padding: 1rem 4rem 1rem 1rem;
-        
+
+    .name-input {
+        padding: 1rem 4rem 1rem 1rem;
+
     }
-    .submit-btn{
-        padding:1rem 2rem;
+
+    .submit-btn {
+        padding: 1rem 2rem;
     }
-    .submit-btn a{
+
+    .submit-btn a {
         font-weight: 500;
         font-size: 20px;
     }
-    body{
+
+    body {
         padding: 10px;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.ocean {
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #015871;
+}
+
+.wave {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+    position: absolute;
+    top: -198px;
+    width: 6400px;
+    height: 198px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+    top: -175px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+    opacity: 1;
+}
+
+@keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+@keyframes swell {
+
+    0%,
+    100% {
+        transform: translate3d(0, -25px, 0);
+    }
+
+    50% {
+        transform: translate3d(0, 5px, 0);
     }
 }
