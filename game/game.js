@@ -148,12 +148,16 @@ function createWords(randomNums, collectionWords) {
           
           if (check.length === 2) {
             if (check[0] === check[1]) {
+              correctAudio.play()
               pies.forEach((p) => {
                 p.classList.add('displayNone');
               })
               check = [];
               pies = [];
-            } else {check = []; pies = []};
+            } else {
+              check = []; pies = [];
+              wrongAudio.play()
+            };
           }
         }
       });
