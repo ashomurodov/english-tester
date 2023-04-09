@@ -24,6 +24,10 @@ const incorrectAnswer = document.querySelector(".incorrect span");
 // All results variable
 const allResultSection = document.querySelector(".all-results");
 const backResultArrow = document.querySelector('.back-arrow');
+const userName = document.querySelector(".user p");
+
+// interval
+let timeInterval;
 
 // Page-1 listeners
 levels.forEach((level) => {
@@ -75,9 +79,46 @@ allResultBtn.addEventListener('click', () => {
   allResultSection.classList.remove('displayNone')
   resultSection.classList.add('displayNone');
 })
+restartBtn.addEventListener('click', () => {
+  playgroundSection.classList.remove('displayNone')
+  resultSection.classList.add('displayNone');
+});
+changeLevelBtn.addEventListener('click', () => {
+  levelBox.classList.remove('displayNone')
+  resultSection.classList.add('displayNone')
+});
 
 // All results listener
 backResultArrow.addEventListener('click', () => {
   allResultSection.classList.add('displayNone');
   resultSection.classList.remove('displayNone');
 })
+userName.textContent = window.localStorage.getItem('userName');
+time.textContent = window.localStorage.setItem(`${time}`);
+correctAnswer.textContent = window.localStorage.setItem(`${correctAnswer}`);
+incorrectAnswer.textContent = window.localStorage.setItem(`${incorrectAnswer}`);
+allResultBtn.addEventListener("click", () => {
+  allResultSection.classList.remove("displayNone");
+  resultSection.classList.add("displayNone");
+});
+
+// All results listener
+backResultArrow.addEventListener("click", () => {
+  allResultSection.classList.add("displayNone");
+  resultSection.classList.remove("displayNone");
+});
+
+// Playground time;
+const timeBar = document.querySelector(".time-bar");
+time = 90;
+function startTime() {
+  time -= 0.75;
+  if (time <= 0) {
+    clearInterval(timeInterval);
+    // GameOver function
+  }
+  console.log("timeee", time);
+  timeBar.style.width = `${time}%`;
+}
+
+// startTime();
