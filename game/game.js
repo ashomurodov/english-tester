@@ -70,12 +70,11 @@ const userName = document.querySelector(".user p");
 let timeInterval;
 //Audios
 const startAudio = new Audio();
-startAudio.src = "/assets/audios/start.mp3"
+startAudio.src = "/assets/audios/start.mp3";
 const wrongAudio = new Audio();
-wrongAudio.src = "/assets/audios/wrong.mp3"
+wrongAudio.src = "/assets/audios/wrong.mp3";
 const correctAudio = new Audio();
-correctAudio.src = "/assets/audios/correct.mp3"
-
+correctAudio.src = "/assets/audios/correct.mp3";
 
 // Page-1 listeners
 levels.forEach((level) => {
@@ -104,14 +103,6 @@ finishBtn.addEventListener("click", () => {
   clearInterval(timeInterval);
   finishGame();
 });
-
-// function getRandomLocation() {
-//   const width = window.innerWidth;
-//   const height = window.innerHeight;
-//   const x = Math.random() * (width - 200) + 100;
-//   const y = Math.random() * (height - 200) + 100;
-//   return { x, y };
-// }
 
 function createWords() {
   cards.forEach((item, idx) => {
