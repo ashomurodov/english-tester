@@ -183,8 +183,8 @@ const resultBox = document.querySelector(".results-box");
 let historyGame = JSON.parse(localStorage.getItem("list")) ? JSON.parse(localStorage.getItem("list")) : [];
 
 function finishGame() {
-  const MinuteCurrent = Math.floor(timeE / 60);
-  const SecundeCurrent = Math.floor(timeE % 60);
+  const MinuteCurrent = Math.floor((timeE + 30) / 60);
+  const SecundeCurrent = Math.floor((timeE + 30) % 60);
   const result = `${MinuteCurrent}:${SecundeCurrent}`;
   clearInterval(timeInterval);
   time.textContent = result;
