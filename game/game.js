@@ -68,6 +68,9 @@ const userName = document.querySelector(".user p");
 
 // interval
 let timeInterval;
+//Audios
+const startAudio = new Audio();
+startAudio.src = "/assets/audios/start.mp3"
 
 // Page-1 listeners
 levels.forEach((level) => {
@@ -86,6 +89,7 @@ startBtn.addEventListener("click", () => {
   timeInterval = setInterval(startTime, 1000);
   page2.classList.add("displayNone");
   playgroundSection.classList.remove("displayNone");
+  startAudio.play()
 });
 
 // Playground listeners
