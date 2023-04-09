@@ -129,6 +129,7 @@ allResultBtn.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
   playgroundSection.classList.remove("displayNone");
   resultSection.classList.add("displayNone");
+  restartGame();
 });
 changeLevelBtn.addEventListener("click", () => {
   levelBox.classList.remove("displayNone");
@@ -144,17 +145,6 @@ userName.textContent = window.localStorage.getItem("userName");
 // time.textContent = window.localStorage.setItem("time", `${time}`);
 // correctAnswer.textContent = window.localStorage.setItem("correctAnswer", `${correctAnswer}`);
 // incorrectAnswer.textContent = window.localStorage.setItem("incorrectAnswer", `${incorrectAnswer}`);
-
-allResultBtn.addEventListener("click", () => {
-  allResultSection.classList.remove("displayNone");
-  resultSection.classList.add("displayNone");
-});
-
-// All results listener
-backResultArrow.addEventListener("click", () => {
-  allResultSection.classList.add("displayNone");
-  resultSection.classList.remove("displayNone");
-});
 
 // Playground time;
 const timeBar = document.querySelector(".time-bar");
@@ -196,6 +186,7 @@ function setItem() {
 }
 
 function showAllResults() {
+  resultBox.innerHTML = "";
   historyGame.forEach((item, idx) => {
     const time = item.time;
     const correct = item.correctAnswer;
@@ -219,4 +210,9 @@ function showAllResults() {
     }
     resultBox.appendChild(result);
   });
+}
+
+function restartGame() {
+  timeE = 90;
+  timeInterval = setInterval(startTime, 1000);
 }
