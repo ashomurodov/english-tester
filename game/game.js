@@ -188,11 +188,9 @@ function finishGame() {
   const result = `${MinuteCurrent}:${SecundeCurrent}`;
   clearInterval(timeInterval);
   time.textContent = result;
-  console.log(time);
   correctAnswer.textContent = correctE;
   incorrectAnswer.textContent = incorrectE;
   historyGame.push({ time: result, correctAnswer: correctE, incorrectAnswer: incorrectE });
-  console.log(result, correctE, incorrectE);
   setItem();
 }
 
