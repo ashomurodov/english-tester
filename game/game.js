@@ -70,7 +70,12 @@ const userName = document.querySelector(".user p");
 let timeInterval;
 //Audios
 const startAudio = new Audio();
-startAudio.src = "/assets/audios/start.mp3";
+startAudio.src = "/assets/audios/start.mp3"
+const wrongAudio = new Audio();
+wrongAudio.src = "/assets/audios/wrong.mp3"
+const correctAudio = new Audio();
+correctAudio.src = "/assets/audios/correct.mp3"
+
 
 // Page-1 listeners
 levels.forEach((level) => {
@@ -173,11 +178,9 @@ function finishGame() {
   const result = `${MinuteCurrent}:${SecundeCurrent}`;
   clearInterval(timeInterval);
   time.textContent = result;
-  console.log(time);
   correctAnswer.textContent = correctE;
   incorrectAnswer.textContent = incorrectE;
   historyGame.push({ time: result, correctAnswer: correctE, incorrectAnswer: incorrectE });
-  console.log(result, correctE, incorrectE);
   setItem();
 }
 
